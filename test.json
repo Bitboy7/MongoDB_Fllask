@@ -1,0 +1,14 @@
+{
+    "_id": {
+      "$oid": "6604d06e99b01981ef4af630"
+    },
+    "filename": "Luis EugenioCorrales Figuero-INTERCONEXION DE-certificate.pdf",
+    "title": "receta magica",
+    "author": {
+      "$oid": "65f4c9b9751bca7df1112422"
+    },
+    "fecha_creacion": {
+      "$date": "2024-03-27T20:05:34.207Z"
+    }
+  }
+

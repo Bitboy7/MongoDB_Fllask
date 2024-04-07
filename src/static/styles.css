@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.animate__animated.animate__fadeIn {
+  --animate-duration: 1.6s;
+}
+
+header {
+  margin-bottom: 68px;
+}
+
+.navbar {
+  position: sticky; /* Add this line */
+  top: 0; /* Add this line */
+  font-weight: 500;
+  border-bottom: #3c3634 1px solid;
+}
+
+body {
+  background-blend-mode: multiply, multiply;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  max-height: fit-content;
+}
+
+p {
+  color: #1d321f;
+  text-align: center;
+}
+
+.nav-link:hover {
+  color: #fcfcfc;
+  border: 2px solid #1c1b1b;
+  border-radius: 25px;
+  transition: border-color 0.4s ease-in-out;
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  background: #f9f9f9;
+  border: 2px solid #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+  display: block;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+.button:hover {
+  background: #f34d5e; /* fallback for old browsers */
+  background: linear-gradient(
+    to right,
+    #f34d5e,
+    #ffa51e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.dropdown {
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.dropdown li:hover {
+  background-color: #4a4949;
+  color: #ffffff;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid #333;
+  background-color: transparent;
+}

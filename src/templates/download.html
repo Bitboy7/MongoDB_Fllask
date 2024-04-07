@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            <!-- seccion de posts-->
+            {% for pdf in pdf_files %}
+            {% for post in post_info %}
+            {% if pdf.filename == post[1] %}
+            <div class="card animate__animated animate__fadeIn">
+                <div class="card-content">
+
+                    <!-- informacion del post -->
+                    <h3 class="title is-4">{{ post[2] }} <ion-icon name="receipt-outline"></ion-icon> </h3>
+                    <p class="lh-sm"><ion-icon name="pencil-outline"></ion-icon> Descripción: {{ post[6] }} </p>
+                    <p><ion-icon name="person"></ion-icon> Autor: {{ post[3] }}</p>
+                    <p><ion-icon name="calendar-outline"></ion-icon> Publicado: {{ post[4] }}</p>
+
+                    <!-- seccion de visualizacion -->
+                    <div class="accordion accordion-flush mb-2 mt-2" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-success-subtle" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    Ver archivo &nbsp <ion-icon name="eye-outline"></ion-icon>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <embed src="{{ url_for('static', filename='uploads/' + post[1]) }}"
+                                    type="application/pdf" width="100%" height="450px">
+                                <!-- Fallback message for mobile browsers -->
+                                <p class="text-muted">En caso de no visualizar el archivo PDF, por favor descárguelo
+                                    <a href="{{ url_for('static', filename='uploads/' + post[1]) }}"
+                                        class="btn btn-outline-primary btn-sm">aquí</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- seccion de descarga  -->
+
+                    <label for="mp4" class="label">{{ pdf.filename }}</label>
+                    <a class="button is-small is-dark is-rounded" style="width: 50%; margin-bottom: 12px;"
+                        href="/download/{{ pdf.filename }}" onclick="showAlert()"><ion-icon
+                            name="cloud-download"></ion-icon></a>
+                    <br>
+
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src="{{ picture }}" />
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <form method="post" action="/comment">
+                                <div class="field">
+                                    <input type="hidden" name="filename" value="{{ pdf.filename }}">
+                                    <p class="control">
+                                        <textarea class="textarea is-danger is-small" name="comment" id="comment"
+                                            placeholder="Añade un comentario..." required></textarea>
+                                    </p>
+                                </div>
+                                <nav class="level">
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <button class="button is-black is-outlined is-rounded"><ion-icon
+                                                    name="chatbubble-ellipses"
+                                                    onclick="showAlertComment()"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </form>
+                        </div>
+                    </article>
+
+                    <!-- seccion de comentarios -->
+                    <p class="d-inline-flex gap-1">
+                        <button class="button is-dark is-outlined is-rounded" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Comentarios&nbsp<ion-icon name="caret-down-circle"></ion-icon>
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            {% for comment in comments %}
+                            {% if post[0] == comment[1] %}
+                            <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-24x24">
+                                        <img src="{{ comment[4] }}" />
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p class="fw-semibold">
+                                            <label for="comment" class="form-label"><ion-icon
+                                                    name="chatbox-outline"></ion-icon></label> {{ comment[3] }}
+                                            <br />
+                                            {{ comment[2] }}
+                                            <br />
+                                            <small> {{ comment[6] }}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Botón de Me gusta -->
+                    <button class="button is-dark is-rounded" onclick="likePost('{{ post[1] }}')">
+                        Me gusta&nbsp<ion-icon name="heart-circle-outline"></ion-icon>
+                    </button>
+                    <span id="likesCount_{{ post[1] }}"></span>
+                    <script>
+                        // Contador de likes para el post
+                        var likesCount_post1 = 0;
+
+                        function likePost(postId) {
+                            likesCount_post1++;
+                            document.getElementById("likesCount_" + postId).innerText = likesCount_post1 + " Me gusta";
+                        }
+                    </script>
+
+                </div>
+            </div>
+            {% endif %}
+
+
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+
+
+        <div class="column">
+            <!-- seccion de posts-->
+            {% for mp4 in mp4_files %}
+            {% for post in post_info %}
+
+            {% if mp4.filename == post[1] %}
+            <div class="card animate__animated animate__fadeIn">
+                <div class="card-content">
+                    <!-- informacion del post -->
+                    <h3 class="title is-4">{{ post[2] }} <ion-icon name="receipt-outline"></ion-icon> </h3>
+                    <p class="lh-sm"><ion-icon name="pencil-outline"></ion-icon> Descripción: {{ post[6] }} </p>
+                    <p><ion-icon name="person"></ion-icon> Autor: {{ post[3] }}</p>
+
+                    <p><ion-icon name="calendar-outline"></ion-icon> Publicado: {{ post[4] }}</p>
+
+                    <video src="{{ url_for('static', filename='uploads/' + post[1]) }}" class="object-fit-contain"
+                        controls></video>
+
+                    <br>
+
+                    <label for="mp4" class="label">{{ mp4.filename }}</label>
+                    <a class="button is-small is-dark is-rounded" href="/download/{{ mp4.filename }}" style="width: 50%; margin-bottom: 12px;"
+                            onclick="showAlert()"><ion-icon name="cloud-download"></ion-icon></a>
+                    <br>
+
+                    <!-- seccion formulario de comentario -->
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-48x48">
+                                <img src="{{ picture }}" />
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <form method="post" action="/comment">
+                                <div class="field">
+                                    <input type="hidden" name="filename" value="{{ mp4.filename }}">
+                                    <p class="control">
+                                        <textarea class="textarea is-danger is-small" name="comment" id="comment"
+                                            placeholder="Añade un comentario..." required></textarea>
+                                    </p>
+                                </div>
+                                <nav class="level">
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <button class="button is-black is-outlined is-rounded"><ion-icon
+                                                    name="chatbubble-ellipses"
+                                                    onclick="showAlertComment()"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </form>
+                        </div>
+                    </article>
+
+                    <!-- seccion de comentarios -->
+                    <p class="d-inline-flex gap-1">
+                        <button class="button is-black is-outlined is-rounded" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseMP4" aria-expanded="false" aria-controls="collapseMP4">
+                            Comentarios &nbsp<ion-icon name="caret-up-circle-sharp"></ion-icon>
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseMP4">
+                        <div class="card card-body">
+                            {% for comment in comments %}
+                            {% if post[0] == comment[1] %}
+                            <article class="media">
+                                <figure class="media-left">
+                                    <p class="image is-24x24">
+                                        <img src="{{ comment[4] }}" />
+                                    </p>
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p class="fw-semibold">
+                                            <label for="comment" class="form-label"></label> {{ comment[3] }}
+                                            <br />
+                                            <small><ion-icon
+                                                name="chatbox-outline"></ion-icon>&nbsp 
+                                                {{ comment[2] }}<br> {{ comment[6] }}</small>           
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Botón de Me gusta -->
+                    <button class="button is-dark is-rounded" onclick="likePost('{{ post[1] }}')">
+                        Me gusta&nbsp<ion-icon name="heart-circle-outline"></ion-icon>
+                    </button>
+                    <span id="likesCount_{{ post[1] }}"></span>
+                    <script>
+                        // Contador de likes para el post
+                        var likesCount_post1 = 0;
+
+                        function likePost(postId) {
+                            likesCount_post1++;
+                            document.getElementById("likesCount_" + postId).innerText = likesCount_post1 + " Me gusta";
+                        }
+                    </script>
+
+                </div>
+            </div>
+            {% endif %}
+
+            </ul>
+            {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        function showAlert() {
+            Toastify({
+                text: '¡Archivo descargado!',
+                duration: 3800,
+                gravity: 'bottom',
+                position: 'right',
+                backgroundColor: 'linear-gradient(to right,  #92D59A, #C0EBA9)',
+                stopOnFocus: true,
+                close: true
+            }).showToast();
+        }
+    </script>
+    <script>
+        function showAlertComment() {
+            Toastify({
+                text: '¡Se ha añadido un nuevo comentario!',
+                duration: 3800,
+                gravity: 'bottom',
+                position: 'right',
+                backgroundColor: 'linear-gradient(to right,  #92D59A, #C0EBA9)',
+                stopOnFocus: true,
+                close: true
+            }).showToast();
+        }
+    </script>
+    {% endblock %}

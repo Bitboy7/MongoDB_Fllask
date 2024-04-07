@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="has-text-centered mt-3 mt-lg-4" style="height: 100vb; background-image: url(../static/img/handrawn-barbecue-elements.jpg); background-size: cover; background-attachment: fixed;">
+   <br>
+   <form action="{{ url_for('upload') }}" method="POST" class="mb-3 form animate__animated animate__fadeIn" method="post"
+      enctype="multipart/form-data">
+      <h1 class="title is-4">Cargar archivos <ion-icon name="folder-outline"></ion-icon> </h1>
+
+      <div class="field is-rounded">
+         <label class="label">Título <ion-icon name="document-text-outline"></ion-icon></label>
+         <div class="control">
+            <input class="input is-dark" type="text" name="title" placeholder="Ingrese el título">
+         </div>
+      </div>
+
+      <div class="field is-rounded">
+         <label class="label">Descripción <ion-icon name="pencil-outline"></ion-icon></label>
+         <div class="control">
+            <textarea class="textarea is-dark is-small" name="description"
+               placeholder="Ingrese una descripción"></textarea>
+         </div>
+         
+         <br>
+         <div id="file-js-example" class="file has-name is-right is-dark">
+            <label class="file-label">
+               <input class="file-input" type="file" name="pdf" accept=".pdf">
+               <span class="file-cta">
+                  <span class="file-icon">
+                     <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">Selecciona archivo PDF
+                  </span>
+               </span>
+               <span class="file-name">No se ha subido ningún archivo</span>
+            </label>
+         </div>
+
+         <div id="file-js-example-mp4" class="file has-name is-right is-dark">
+            <label class="file-label">
+               <input class="file-input" type="file" name="mp4" accept=".mp4">
+               <span class="file-cta">
+                  <span class="file-icon">
+                     <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">Selecciona archivo MP4
+                  </span>
+               </span>
+               <span class="file-name">No se ha subido ningún archivo</span>
+            </label>
+         </div>
+
+         <button class="button is-dark is-outlined is-rounded">
+            <span class="icon is-small">
+               <ion-icon name="arrow-up"></ion-icon>
+            </span>
+            <span>Subir</span>
+         </button>
+   </form>
+</div>
+<br>
+<article class="message is-warning is-small">
+   <div class="message-header">
+      <p>Sube tus recetas</p>
+      <button class="delete" aria-label="delete"></button>
+   </div>
+   <div class="message-body">
+      Sube tus recetas a nuestra página web y compártelas con otros amantes de la cocina. <strong>Comparte tus
+         mejores
+         creaciones</strong>, muestra tus habilidades culinarias y descubre nuevas recetas. Aprovecha esta plataforma
+      para inspirarte y ser inspiración para otros. <a>Únete a nuestra comunidad</a> y forma parte de la experiencia
+      gastronómica en línea. ¡No esperes más, comparte tus recetas ahora!
+   </div>
+</article>
+<script>
+   const fileInputPDF = document.querySelector('#file-js-example input[name=pdf]');
+   const fileNamePDF = document.querySelector('#file-js-example .file-name');
+   fileInputPDF.onchange = () => {
+      if (fileInputPDF.files.length > 0) {
+         fileNamePDF.textContent = fileInputPDF.files[0].name;
+         Toastify({
+            text: 'Archivo PDF seleccionado: ' + fileInputPDF.files[0].name,
+            duration: 3000,
+            close: true,
+            gravity: 'bottom',
+            position: 'right',
+            backgroundColor: 'linear-gradient(to right,   #f34d5e, #a955ed)',
+            stopOnFocus: true,
+         }).showToast();
+      }
+   }
+
+   const fileInputMP4 = document.querySelector('#file-js-example-mp4 input[name=mp4]');
+   const fileNameMP4 = document.querySelector('#file-js-example-mp4 .file-name');
+   fileInputMP4.onchange = () => {
+      if (fileInputMP4.files.length > 0) {
+         fileNameMP4.textContent = fileInputMP4.files[0].name;
+         Toastify({
+            text: 'Archivo MP4 seleccionado: ' + fileInputMP4.files[0].name,
+            duration: 3000,
+            close: true,
+            gravity: 'bottom',
+            position: 'right',
+            backgroundColor: 'linear-gradient(to right,   #f34d5e,#a955ed)',
+            stopOnFocus: true,
+         }).showToast();
+      }
+   }
+</script>
+
+{% endblock %}

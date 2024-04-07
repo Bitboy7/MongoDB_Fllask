@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post</title>
+</head>
+<body>
+    <h1>Post</h1>
+    {% if data %}
+        <h2>{{ data.title }}</h2>
+        <p>{{ data.comment }}</p>
+        <h3>Comentarios</h3>
+        <ul>
+            {% for comentario in data.comentarios %}
+                <li>{{ comentario }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontró el post con el filename especificado.</p>
+    {% endif %}
+</body>
+</html>
