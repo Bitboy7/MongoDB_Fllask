@@ -1,7 +1,7 @@
 from config.db import *
 from gridfs import GridFS
 from datetime import datetime
-from main import app
+from src.app import app
 import os
 from werkzeug.utils import secure_filename
 
