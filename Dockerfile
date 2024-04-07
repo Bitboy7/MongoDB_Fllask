@@ -3,4 +3,4 @@ ADD . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 80
-CMD python src/main.py
+CMD gunicorn src.main:appsdoc --bind
