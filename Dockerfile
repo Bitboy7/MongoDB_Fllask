@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia el contenido de tu proyecto al contenedor
 COPY . .
 
+# Cambia el directorio de trabajo a /app/src
+WORKDIR /app/src
+
 # Expone el puerto en el que se ejecutará tu aplicación Flask
 EXPOSE 80
 
