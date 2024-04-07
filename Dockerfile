@@ -14,10 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Cambia el directorio de trabajo a /app/src
-WORKDIR /app/src
+WORKDIR /app
 
 # Expone el puerto en el que se ejecutará tu aplicación Flask
 EXPOSE 80
 
 # Define el comando para ejecutar tu aplicación Flask
-CMD ["python", "app.py"]
+CMD ["python", "src/app.py"]
