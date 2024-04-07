@@ -1,6 +1,6 @@
 FROM python:3.10.8-slim-buster
 ADD . /app
-WORKDIR /app/src
+WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE 80
-CMD py main.py
+CMD python src/main.py
