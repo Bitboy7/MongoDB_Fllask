@@ -1,5 +1,11 @@
-FROM python:3.10.8-slim-buster
+# syntax=docker/dockerfile:1
+
+FROM python:3.8-slim-buster
+
 WORKDIR /app
+
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
-EXPOSE 80
-CMD ["gunicorn", "src.main:app", "-b", "0.0.0.0:80"]
+
+COPY . /app
+
+CMD [ "python3", "-m" ,"src/main.py", "--host=0.0.0.0"]
