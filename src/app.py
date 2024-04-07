@@ -207,5 +207,5 @@ def get_files():
 if __name__ == '__main__':
     app.secret_key = os.getenv('SECRET_KEY')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.run(host='0.0.0.0', port=80, debug=False)
+    app.run()
 # Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app 
