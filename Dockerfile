@@ -1,8 +1,6 @@
-FROM python:3.10.8-slim-buster
-ADD . /app
+FROM python:3.9
 WORKDIR /app
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-COPY . .
-EXPOSE 80
-CMD [ "python3", "-m" , "src.app"]
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY ./src /app/src
+CMD ["python", "-m", "src.main"]
