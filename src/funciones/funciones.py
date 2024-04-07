@@ -1,4 +1,4 @@
-from src.config.db import *
+from config.db import *
 from gridfs import GridFS
 from datetime import datetime
 from main import app
