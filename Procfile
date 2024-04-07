@@ -1,1 +1,1 @@
-web: gunicorn src.main:appsdo
+web: python src/main.py
