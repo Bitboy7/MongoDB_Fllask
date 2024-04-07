@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, make_response, redirect, abor
 import oauthlib
 import os
 from datetime import datetime
-from config.db import db
-from funciones.funciones import *
+from src.config.db import db
+from src.funciones.funciones import *
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
