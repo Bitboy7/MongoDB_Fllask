@@ -1,6 +1,5 @@
-FROM python:3.9
+FROM python:3.10.8-slim-buster
 WORKDIR /app
-COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
-COPY ./src /app/src
-CMD ["python", "-m", "src.main"]
+EXPOSE 80
+CMD ["gunicorn", "src.main:app", "-b", "0.0.0.0:80"]
