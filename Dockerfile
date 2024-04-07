@@ -1,23 +1,6 @@
-# Usa una imagen base de Python
-FROM python:3.9
-
-# Establece el directorio de trabajo en /app
-WORKDIR /app
-
-# Copia el archivo requirements.txt al contenedor
-COPY requirements.txt .
-
-# Instala las dependencias del proyecto
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copia el contenido de tu proyecto al contenedor
-COPY . .
-
-# Cambia el directorio de trabajo a /app/src
-WORKDIR /app/src
-
-# Expone el puerto en el que se ejecutará tu aplicación Flask
+FROM python:3.10.8-slim-buster
+ADD . /code
+WORKDIR /code
+RUN pip install -r requirements.txt
 EXPOSE 80
-
-# Define el comando para ejecutar tu aplicación Flask
-CMD ["py", "app.py"]
+CMD python src/main.py
