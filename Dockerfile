@@ -1,6 +1,9 @@
 FROM python:3.10.8-slim-buster
 ADD . /app
 WORKDIR /app
-RUN pip install -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+COPY . .
 EXPOSE 80
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80", "main:app"]
+WORKDIR /app/src
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
