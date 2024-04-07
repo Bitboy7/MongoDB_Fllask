@@ -203,9 +203,13 @@ def get_files():
     return render_template('download.html', pdf_files=pdf_files, mp4_files=mp4_files, name=name, email=email, picture=picture, post_info=post_info, comments=comments, hour=hour)
 
 
-# Correr servidor -----------------------------------------
+# Correr servidor con gunicorn -----------------------------------------
 if __name__ == '__main__':
     app.secret_key = os.getenv('SECRET_KEY')
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    # Ejecutar la aplicación con gunicorn
+    # Comando: gunicorn <nombre_del_archivo>:<nombre_de_la_variable_app>
+    # En este caso, el archivo es main.py y la variable de la aplicación es app
+    # Por lo tanto, el comando sería: gunicorn main:app
     app.run(host='0.0.0.0', port=80)
 # Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app 
