@@ -211,5 +211,5 @@ if __name__ == '__main__':
     # Comando: gunicorn <nombre_del_archivo>:<nombre_de_la_variable_app>
     # En este caso, el archivo es main.py y la variable de la aplicación es app
     # Por lo tanto, el comando sería: gunicorn main:app
-    app.run(host='0.0.0.0', port=80)
+    app.run(port=5000)
 # Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app 
