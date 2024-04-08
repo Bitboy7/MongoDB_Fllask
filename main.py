@@ -36,9 +36,8 @@ def guardar_archivo(file):
     filename = secure_filename(file.filename.replace(" ", "_"))
     # Guardar el archivo en la carpeta uploads dentro de static
     file.save(os.path.join(app.config.get('UPLOAD_FOLDER', 'static/uploads'), filename))
-    # Guardar el archivo en la sistema de archivos de la base de datos
-    with open(file, 'rb') as f:
-        fs.put(f, filename=filename, fecha_creacion=fecha_actual)
+    # Guardar el archivo en el sistema de archivos de la base de datos
+    fs.put(file, filename=filename, fecha_creacion=fecha_actual)
     
 
 def obtener_archivos(extension):
