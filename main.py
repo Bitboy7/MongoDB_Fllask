@@ -20,6 +20,10 @@ UPLOAD_FOLDER = 'src/static/uploads'
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
+app.secret_key = os.getenv('SECRET_KEY')
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # inicio de sesion con google
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
 client_secrets_file = os.path.join(
@@ -33,6 +37,7 @@ flow = Flow.from_client_secrets_file(
             ],
     redirect_uri="http://localhost:5000/callback"
 )
+
 
 def login_is_required(function):
     def wrapper(*args, **kwargs):
@@ -49,6 +54,8 @@ def handle_access_denied_error(error):
     return "Access Denied", 403
 
 # Login con Google ------------------------------
+
+
 @app.route("/glogin")
 def glogin():
     authorization_url, state = flow.authorization_url()
@@ -145,17 +152,19 @@ def upload():
         pdf_file = request.files['pdf']
         if pdf_file.filename != '':
             filename = pdf_file.filename.replace(
-                ' ', '_') 
+                ' ', '_')
             guardar_archivo(pdf_file)  # Guarda el archivo PDF
-            guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
+            guardar_post(filename, request.form['title'], session.get(
+                "name"), request.form['description'])
 
     if 'mp4' in request.files:
         mp4_file = request.files['mp4']
         if mp4_file.filename != '':
             filename = mp4_file.filename.replace(
-                ' ', '_') 
+                ' ', '_')
             guardar_archivo(mp4_file)  # Guarda el archivo MP4
-            guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
+            guardar_post(filename, request.form['title'], session.get(
+                "name"), request.form['description'])
 
     return redirect('/archivos')
 
@@ -176,6 +185,7 @@ def download(filename):
     else:
         return 'El archivo no existe'
 
+
 @app.route('/comment', methods=['POST'])
 def comment():
     filename = request.form['filename']
@@ -185,6 +195,7 @@ def comment():
         return redirect('/archivos')
     else:
         return "No se encontró el post con el título especificado."
+
 
 @app.route('/archivos', methods=['GET'])
 def get_files():
@@ -205,11 +216,5 @@ def get_files():
 
 # Correr servidor con gunicorn -----------------------------------------
 if __name__ == '__main__':
-    app.secret_key = os.getenv('SECRET_KEY')
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    # Ejecutar la aplicación con gunicorn
-    # Comando: gunicorn <nombre_del_archivo>:<nombre_de_la_variable_app>
-    # En este caso, el archivo es main.py y la variable de la aplicación es app
-    # Por lo tanto, el comando sería: gunicorn main:app
     app.run(port=5000)
-# Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app 
+# Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app
