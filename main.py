@@ -170,7 +170,7 @@ flow = Flow.from_client_secrets_file(
             "https://www.googleapis.com/auth/userinfo.email",
             "openid"
             ],
-    redirect_uri="mongodbfllask-production.up.railway.app/callback"
+    redirect_uri="https://mongodbfllask-production.up.railway.app/callback"
 )
 
 
