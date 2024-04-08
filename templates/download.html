@@ -45,7 +45,7 @@
 
                     <label for="mp4" class="label">{{ pdf.filename }}</label>
                     <a class="button is-small is-dark is-rounded" style="width: 50%; margin-bottom: 12px;"
-                        href="{{ url_for('static', filename='uploads/' + post[1]) }}" onclick="showAlert()"><ion-icon
+                        href="/download/{{ pdf.filename }}" onclick="showAlert()"><ion-icon
                             name="cloud-download"></ion-icon></a>
                     <br>
 
