@@ -6,7 +6,6 @@ import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from config.db import db
-from helpers.funciones import *
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
