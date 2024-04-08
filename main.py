@@ -3,7 +3,7 @@ import oauthlib
 import os
 from datetime import datetime
 from config.db import db
-from funciones.funciones import *
+from helpers.funciones import *
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -16,7 +16,7 @@ load_dotenv()
 # Declaramos la variable de ejecución de la aplicación
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'src/static/uploads'
+UPLOAD_FOLDER = 'static/uploads'
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -35,7 +35,7 @@ flow = Flow.from_client_secrets_file(
             "https://www.googleapis.com/auth/userinfo.email",
             "openid"
             ],
-    redirect_uri="http://localhost:5000/callback"
+    redirect_uri="http://127.0.0.1:5000/callback"
 )
 
 
