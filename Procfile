@@ -1,1 +1,1 @@
-web: gunicorn -w 1 main:app
+web: gunicorn -w 1 --bind 0.0.0.0:5000 --log-level=DEBUG main:app --reload
