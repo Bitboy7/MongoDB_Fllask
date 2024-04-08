@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, make_response, redirect, abor
 import oauthlib
 import os
 from datetime import datetime
-from src.config.db import db
-from src.funciones.funciones import *
+from config.db import db
+from funciones.funciones import *
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -31,7 +31,7 @@ flow = Flow.from_client_secrets_file(
             "https://www.googleapis.com/auth/userinfo.email",
             "openid"
             ],
-    redirect_uri="https://mongodbfllask-production.up.railway.app/callback"
+    redirect_uri="http://localhost:5000/callback"
 )
 
 def login_is_required(function):
