@@ -18,7 +18,7 @@ load_dotenv()
 # Declaramos la variable de ejecución de la aplicación
 app = Flask(__name__)
 
-UPLOAD_FOLDER = '/c:/app/static/uploads'
+UPLOAD_FOLDER = 'static/uploads'
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
