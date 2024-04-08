@@ -153,14 +153,14 @@
 
                     <p><ion-icon name="calendar-outline"></ion-icon> Publicado: {{ post[4] }}</p>
 
-                    <video src="{{ url_for('static', filename='uploads/' + post[1]) }}" ,class="object-fit-contain" controls></video>
+                    <video src="{{ url_for('static', filename='uploads/' + post[1]) }}" class="object-fit-contain"
+                        controls></video>
 
                     <br>
 
                     <label for="mp4" class="label">{{ mp4.filename }}</label>
-                    <a class="button is-small is-dark is-rounded" href="/download/{{ mp4.filename }}"
-                        style="width: 50%; margin-bottom: 12px;" onclick="showAlert()"><ion-icon
-                            name="cloud-download"></ion-icon></a>
+                    <a class="button is-small is-dark is-rounded" href="/download/{{ mp4.filename }}" style="width: 50%; margin-bottom: 12px;"
+                            onclick="showAlert()"><ion-icon name="cloud-download"></ion-icon></a>
                     <br>
 
                     <!-- seccion formulario de comentario -->
@@ -214,8 +214,9 @@
                                         <p class="fw-semibold">
                                             <label for="comment" class="form-label"></label> {{ comment[3] }}
                                             <br />
-                                            <small><ion-icon name="chatbox-outline"></ion-icon>&nbsp
-                                                {{ comment[2] }}<br> {{ comment[6] }}</small>
+                                            <small><ion-icon
+                                                name="chatbox-outline"></ion-icon>&nbsp 
+                                                {{ comment[2] }}<br> {{ comment[6] }}</small>           
                                         </p>
                                     </div>
                                 </div>
