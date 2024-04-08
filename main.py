@@ -31,11 +31,8 @@ fs = GridFS(db) # Crear un sistema de archivos en la base de datos
 def guardar_archivo(file):
     # Obtener la fecha y hora actual
     fecha_actual = datetime.today()
-    
     # Reemplazar espacios en el nombre de archivo por _
     filename = secure_filename(file.filename.replace(" ", "_"))
-    # Guardar el archivo en la carpeta uploads dentro de static
-    file.save(os.path.join(app.config.get('UPLOAD_FOLDER', 'static/uploads'), filename))
     # Guardar el archivo en el sistema de archivos de la base de datos
     fs.put(file, filename=filename, fecha_creacion=fecha_actual)
     
@@ -284,20 +281,18 @@ def upload():
     if 'pdf' in request.files:
         pdf_file = request.files['pdf']
         if pdf_file.filename != '':
-            filename = pdf_file.filename.replace(
-                ' ', '_')
+            filename = pdf_file.filename.replace(' ', '_')
             guardar_archivo(pdf_file)  # Guarda el archivo PDF
-            guardar_post(filename, request.form['title'], session.get(
-                "name"), request.form['description'])
+            guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
+            pdf_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  # Guarda el archivo en la carpeta static/uploads
 
     if 'mp4' in request.files:
         mp4_file = request.files['mp4']
         if mp4_file.filename != '':
-            filename = mp4_file.filename.replace(
-                ' ', '_')
+            filename = mp4_file.filename.replace(' ', '_')
             guardar_archivo(mp4_file)  # Guarda el archivo MP4
-            guardar_post(filename, request.form['title'], session.get(
-                "name"), request.form['description'])
+            guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
+            mp4_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  # Guarda el archivo en la carpeta static/uploads
 
     return redirect('/archivos')
 
