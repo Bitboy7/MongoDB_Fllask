@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
 
 # Run main.py when the container launches
-CMD ["python", "main.py"]
+CMD gunicorn -w 1 --bind 0.0.0.0:5000 --log-level=DEBUG main:app --reload
