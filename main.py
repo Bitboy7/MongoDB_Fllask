@@ -216,5 +216,5 @@ def get_files():
 
 # Correr servidor con gunicorn -----------------------------------------
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run()
 # Ngrok: ngrok http 5000 --domain=likely-cosmic-mosquito.ngrok-free.app
