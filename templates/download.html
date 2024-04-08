@@ -157,7 +157,7 @@
                     <br>
 
                     <label for="mp4" class="label">{{ mp4.filename }}</label>
-                    <a class="button is-small is-dark is-rounded" href="{{ url_for('static', filename='uploads/' + post[1]) }}"
+                    <a class="button is-small is-dark is-rounded" href="/download/{{ mp4.filename }}"
                         style="width: 50%; margin-bottom: 12px;" onclick="showAlert()"><ion-icon
                             name="cloud-download"></ion-icon></a>
                     <br>
