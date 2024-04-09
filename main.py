@@ -28,14 +28,20 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 fs = GridFS(db) # Crear un sistema de archivos en la base de datos
 
+
 def guardar_archivo(file):
     # Obtener la fecha y hora actual
     fecha_actual = datetime.today()
+    
     # Reemplazar espacios en el nombre de archivo por _
     filename = secure_filename(file.filename.replace(" ", "_"))
+    
+    # Guardar el archivo en la carpeta uploads dentro de static
+    file.save(os.path.join(app.config.get('UPLOAD_FOLDER', 'static/uploads'), filename))
+    
     # Guardar el archivo en el sistema de archivos de la base de datos
     fs.put(file, filename=filename, fecha_creacion=fecha_actual)
-    
+
 
 def obtener_archivos(extension):
     # Utiliza la función find de la variable fs para buscar archivos con la extensión especificada
@@ -276,23 +282,27 @@ def publicaciones():
     return render_template('index.html')
 
 
+MAX_FILE_SIZE = 1024 * 1024 * 10  # Define the maximum file size in 10 Megabytes
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'pdf' in request.files:
         pdf_file = request.files['pdf']
         if pdf_file.filename != '':
+            if pdf_file.content_length > MAX_FILE_SIZE:
+                abort(413)  # File too large, return HTTP 413 error
             filename = pdf_file.filename.replace(' ', '_')
             guardar_archivo(pdf_file)  # Guarda el archivo PDF
             guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
-            pdf_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  # Guarda el archivo en la carpeta static/uploads
 
     if 'mp4' in request.files:
         mp4_file = request.files['mp4']
         if mp4_file.filename != '':
+            if mp4_file.content_length > MAX_FILE_SIZE:
+                abort(413)  # File too large, return HTTP 413 error
             filename = mp4_file.filename.replace(' ', '_')
             guardar_archivo(mp4_file)  # Guarda el archivo MP4
             guardar_post(filename, request.form['title'], session.get("name"), request.form['description'])
-            mp4_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  # Guarda el archivo en la carpeta static/uploads
 
     return redirect('/archivos')
 
