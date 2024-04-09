@@ -28,6 +28,9 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 
 git clone https://github.com/Bitboy7/MongoDB_Fllask
 ```
+
+```
+## Cd
 2. Navega al directorio del proyecto.
 
 cd MongoDB_Flask
