@@ -39,16 +39,18 @@ cd <nombre-del-directorio>
 ```bash
 python3 -m venv env
 source env/bin/activate  # En Windows, usa `env\Scripts\activate`
-```
-# .env
-MONGO_URI='your uri'
-CLIENT_SECRET='your google client'
-GOOGLE_CLIENT_ID='your google client id'
-SECRET_KEY='your secret key'4. Instala las dependencias necesarias.
+
+4. Instala las dependencias necesarias.
 
 ```bash
 pip install -r requirements.txt
 ```
+## .env
+
+MONGO_URI='your uri'
+CLIENT_SECRET='your google client'
+GOOGLE_CLIENT_ID='your google client id'
+SECRET_KEY='your secret key'
 
 ## Uso
 
