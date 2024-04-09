@@ -23,7 +23,7 @@ UPLOAD_FOLDER = 'static/uploads'
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 app.secret_key = os.getenv('SECRET_KEY')
-
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 10  # 10 Megabytes
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 fs = GridFS(db) # Crear un sistema de archivos en la base de datos

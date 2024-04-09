@@ -58,26 +58,13 @@
                input.value = "";
               }
             }
-           </script>
-
-          <div id="loader" class="loader">
-            <img src="{{ url_for('static', filename='loader.gif') }}" alt="Loading..." />
-          </div>
+           </script>>
           <button class="button is-dark is-outlined is-rounded" onclick="uploadFile()">
             <span class="icon is-small">
                <ion-icon name="arrow-up"></ion-icon>
             </span>
             <span>Subir</span>
           </button>
-          <script>
-            function uploadFile() {
-               const loader = document.getElementById('loader');
-               loader.style.display = 'block';
-               // Perform file upload logic here
-               // Once the file is uploaded, hide the loader
-               loader.style.display = 'none';
-            }
-          </script>
    </form>
 </div>
 <br>
