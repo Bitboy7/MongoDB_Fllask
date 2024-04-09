@@ -3,7 +3,7 @@
 ![cookbookie](static/img/logo.png)
 ```markdown
 
-# CHEF-BLOG
+# CookBookie
 
 ## Descripción del proyecto.
 
