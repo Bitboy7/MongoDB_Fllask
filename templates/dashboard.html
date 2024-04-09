@@ -37,19 +37,28 @@
             </label>
          </div>
 
-         <div id="file-js-example-mp4" class="file has-name is-right is-dark">
+           <div id="file-js-example-mp4" class="file has-name is-right is-dark">
             <label class="file-label">
-               <input class="file-input" type="file" name="mp4" accept=".mp4">
+               <input class="file-input" type="file" name="mp4" accept=".mp4" onchange="checkFileSize(this)">
                <span class="file-cta">
-                  <span class="file-icon">
-                     <i class="fas fa-upload"></i>
-                  </span>
-                  <span class="file-label">Selecciona archivo MP4
-                  </span>
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">Selecciona archivo MP4
+                </span>
                </span>
                <span class="file-name">No se ha subido ningún archivo</span>
             </label>
-         </div>
+           </div>
+
+           <script>
+            function checkFileSize(input) {
+              if (input.files[0].size > 10 * 1024 * 1024) {
+               alert("El archivo es demasiado grande. Por favor, seleccione un archivo de menos de 10MB.");
+               input.value = "";
+              }
+            }
+           </script>
 
          <button class="button is-dark is-outlined is-rounded">
             <span class="icon is-small">
