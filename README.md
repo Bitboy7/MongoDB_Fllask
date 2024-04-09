@@ -26,4 +26,4 @@ GOOGLE_CLIENT_ID='your google client id'
 SECRET_KEY='your secret key'
 
 # Ejecutar
-python run.py
+python main.py
