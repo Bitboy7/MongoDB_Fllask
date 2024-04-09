@@ -25,13 +25,12 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 1. Clona este repositorio a tu máquina local usando `git clone`.
 
 ```bash
-git clone <url-del-repositorio>
-```
+git clone https://github.com/Bitboy7/MongoDB_Fllask```
 
 2. Navega al directorio del proyecto.
 
 ```bash
-cd <nombre-del-directorio>
+cd MongoDB_Flask
 ```
 
 3. (Opcional) Crea y activa un entorno virtual de Python.
