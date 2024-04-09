@@ -23,11 +23,12 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 ```
 ## Instalación
 
-```1. Clona este repositorio a tu máquina local usando `git clone`
+``` 
+1. Clona este repositorio a tu máquina local usando `git clone`
 
 git clone https://github.com/Bitboy7/MongoDB_Fllask
 ```
-```2. Navega al directorio del proyecto.
+2. Navega al directorio del proyecto.
 
 cd MongoDB_Flask
 ```
