@@ -56,7 +56,7 @@ SECRET_KEY='your secret key'
 Para iniciar el servidor, ejecuta:
 
 ```bash
-python app.py
+python main.py
 ```
 
 Asegúrate de que MongoDB esté funcionando en tu máquina antes de iniciar el servidor.
