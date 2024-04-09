@@ -24,25 +24,25 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 
 1. Clona este repositorio a tu máquina local usando `git clone`.
 
-```bash
+```
 git clone https://github.com/Bitboy7/MongoDB_Fllask```
 
 2. Navega al directorio del proyecto.
 
-```bash
+```
 cd MongoDB_Flask
 ```
-
 3. (Opcional) Crea y activa un entorno virtual de Python.
 
-```bash
 python3 -m venv env
-source env/bin/activate  # En Windows, usa `env\Scripts\activate`
+source env/bin/activate  # En Windows, usa `env\Scripts\activate````bash
 
-4. Instala las dependencias necesarias.
 
-```bash
-pip install -r requirements.txt
+```4. Instala las dependencias necesarias.
+
+
+*pip install -r requirements.txt*
+
 ```
 ## .env
 
@@ -68,6 +68,5 @@ Si deseas contribuir al proyecto, por favor revisa las [guías de contribución]
 ## Licencia
 
 Este proyecto está licenciado bajo [MIT](LICENSE).
-```
 
-Esta es una plantilla básica y puede que necesites modificarla para adaptarla a las necesidades específicas de tu proyecto.
+Codix 2024.
