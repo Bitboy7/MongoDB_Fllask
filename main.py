@@ -151,12 +151,6 @@ def delete_comment_route(comment_id):
 def index():
     return render_template('login.html')
 
-
-@app.route('/publicaciones')
-def publicaciones():
-    return render_template('index.html')
-
-
 MAX_FILE_SIZE = 1024 * 1024 * 10  # Define the maximum file size in 10 Megabytes
 
 @app.route('/upload', methods=['POST'])
