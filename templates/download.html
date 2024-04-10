@@ -139,6 +139,16 @@
                     </form>
                     {% endif %}
                     <script>
+                        function showAlertdelete() {
+                            var resultado = window.confirm('¿Estás seguro?');
+                            if (resultado === true) {
+                                window.alert('Okay, sí estás seguro.');
+                            } else {
+                                window.alert('No estás seguro.');
+                            }
+                        }
+                    </script>
+                    <script>
                         // Contador de likes para el post
                         var likesCount_post1 = 0;
 
