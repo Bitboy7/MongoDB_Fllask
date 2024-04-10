@@ -105,6 +105,22 @@
                                             <small> {{ comment[6] }}</small>
                                         </p>
                                     </div>
+                                    {% if name == comment[3] %}
+                                    <form method="POST" action="/delete_comment/{{ comment[0] }}">
+                                        <button class="button is-small is-danger is-rounded" type="submit" onclick="showAlertdelete()">Eliminar&nbsp<ion-icon name="trash-outline"></ion-icon></button>
+                                    </form>
+                                    {% endif %}
+
+                                    <script>
+                                        function showAlertdelete() {
+                                            var resultado = window.confirm('¿Estás seguro?');
+                                            if (resultado === true) {
+                                                window.alert('Okay, sí estás seguro.');
+                                            } else {
+                                                window.alert('No estás seguro.');
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </article>
                             {% endif %}
@@ -117,6 +133,21 @@
                         Me gusta&nbsp<ion-icon name="heart-circle-outline"></ion-icon>
                     </button>
                     <span id="likesCount_{{ post[1] }}"></span>
+                    {% if name == post[3] %}
+                    <form method="POST" action="/delete_post/{{ post[0] }}">
+                        <button class="button is-danger is-rounded" type="submit" onclick="showAlertdelete()">Eliminar&nbsp<ion-icon name="trash-outline"></ion-icon></button>
+                    </form>
+                    {% endif %}
+                    <script>
+                        function showAlertdelete() {
+                            var resultado = window.confirm('¿Estás seguro?');
+                            if (resultado === true) {
+                                window.alert('Okay, sí estás seguro.');
+                            } else {
+                                window.alert('No estás seguro.');
+                            }
+                        }
+                    </script>
                     <script>
                         // Contador de likes para el post
                         var likesCount_post1 = 0;
@@ -217,6 +248,22 @@
                                                 {{ comment[2] }}<br> {{ comment[6] }}</small>
                                         </p>
                                     </div>
+                                    {% if name == comment[3] %}
+                                    <form method="POST" action="/delete_comment/{{ comment[0] }}">
+                                        <button class="button is-small is-danger is-rounded" type="submit" onclick="showAlertdelete()">Eliminar&nbsp<ion-icon name="trash-outline"></ion-icon></button>
+                                    </form>
+                                    {% endif %}
+
+                                    <script>
+                                        function showAlertdelete() {
+                                            var resultado = window.confirm('¿Estás seguro?');
+                                            if (resultado === true) {
+                                                window.alert('Okay, sí estás seguro.');
+                                            } else {
+                                                window.alert('No estás seguro.');
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </article>
                             {% endif %}
@@ -228,6 +275,11 @@
                         Me gusta&nbsp<ion-icon name="heart-circle-outline"></ion-icon>
                     </button>
                     <span id="likesCount_{{ post[1] }}"></span>
+                    {% if name == post[3] %}
+                    <form method="POST" action="/delete_post/{{ post[0] }}">
+                        <button class="button is-danger is-rounded" type="submit" onclick="showAlertdelete()">Eliminar&nbsp<ion-icon name="trash-outline"></ion-icon></button>
+                    </form>
+                    {% endif %}
                     <script>
                         // Contador de likes para el post
                         var likesCount_post1 = 0;

@@ -23,7 +23,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+production.env
+production
 # Distribution / packaging
 .Python
 build/
